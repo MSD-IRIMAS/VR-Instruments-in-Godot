@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxfrfhtaagj3c"]
+
+[ext_resource type="Script" path="res://Scripts/TestRig.gd" id="1_mg37s"]
+[ext_resource type="Script" path="res://Scripts/Hand.gd" id="2_2qvlv"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0rw34"]
+height = 1.8
+radius = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_ln8qf"]
+size = Vector3(0.02, 0.02, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyd7u"]
+size = Vector3(0.02, 0.02, 0.1)
+
+[node name="TestRig" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+collision_mask = 5
+script = ExtResource("1_mg37s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_0rw34")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="LeftHand" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.196913, 0.760632, -0.761393)
+collision_layer = 2
+collision_mask = 6
+sync_to_physics = false
+script = ExtResource("2_2qvlv")
+
+[node name="LeftHandMesh" type="MeshInstance3D" parent="LeftHand"]
+mesh = SubResource("BoxMesh_ln8qf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftHand"]
+shape = SubResource("BoxShape3D_jyd7u")
+
+[node name="RightHand" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.162311, 0.769006, -0.774053)
+collision_layer = 2
+collision_mask = 6
+sync_to_physics = false
+script = ExtResource("2_2qvlv")
+
+[node name="RightHandMesh" type="MeshInstance3D" parent="RightHand"]
+mesh = SubResource("BoxMesh_ln8qf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightHand"]
+shape = SubResource("BoxShape3D_jyd7u")

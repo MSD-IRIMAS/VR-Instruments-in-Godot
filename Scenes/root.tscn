@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://cd10qbghiv7u7"]
+
+[ext_resource type="Texture2D" uid="uid://dl1jm3fruidp2" path="res://Textures/pattern.png" id="1_fdlpq"]
+[ext_resource type="Script" path="res://Scripts/StartVR.gd" id="1_xum33"]
+[ext_resource type="PackedScene" uid="uid://dh73lhl8ke6mn" path="res://Scenes/XRRig.tscn" id="2_1nm5d"]
+[ext_resource type="PackedScene" uid="uid://cxfrfhtaagj3c" path="res://Scenes/TestRig.tscn" id="2_2rxwd"]
+[ext_resource type="PackedScene" uid="uid://dd0yr8g44abf6" path="res://Scenes/xylophone.tscn" id="3_o4vnx"]
+[ext_resource type="PackedScene" uid="uid://10epodhxx2j1" path="res://Scenes/xylophone3.tscn" id="5_wf7vt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_thtbk"]
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afjrr"]
+albedo_texture = ExtResource("1_fdlpq")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n8g8s"]
+material = SubResource("StandardMaterial3D_afjrr")
+size = Vector2(50, 50)
+
+[node name="Root" type="Node3D"]
+script = ExtResource("1_xum33")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_thtbk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("PlaneMesh_n8g8s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+
+[node name="Xylophone" parent="." instance=ExtResource("3_o4vnx")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -5)
+
+[node name="Xylophone3" parent="." instance=ExtResource("5_wf7vt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="TestRig" parent="." instance=ExtResource("2_2rxwd")]
+
+[node name="XRRig" parent="." instance=ExtResource("2_1nm5d")]
