@@ -59,42 +59,52 @@ func _ready() -> void:
 
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta) -> void:
+func _physics_process(delta) -> void:
 	# Register variables and calculate velocity
 	var movement := position - last_position
 	velocity = movement.length() * fps
 	last_position = position
 	
-	elapsed_time += _delta
+	elapsed_time += delta
 	
 	# TESTING
 	#print(velocity)
 	
+	#region beat detection
+	# If the length between the two last points is longer than the minimun distance
+	# and if the velocity is lower than the minimum speed...
 	if (recorded_positions[-1] - position).length() >= MIN_DISTANCE \
 	and velocity <= MIN_SPEED:
+		# ...Add the position to the record
 		recorded_positions.append(position)
 		# TESTING
 		#print(recorded_positions[-1])
 		
+		# Calculate the movement between the two last recorded positions...
 		movement = recorded_positions[-1] - recorded_positions[-2]
 		# TESTING
 		#print(movement)
 		
+		# ... And use it to calculate the angle between the reference vector of
+		# the current beat and this vector
 		var angle := rad_to_deg(PATERNS[beats][state % beats].angle_to(movement))
 		# TESTING
 		#print(angle)
 		
+		# If this angle is equal of less than the max angle...
 		if angle <= MAX_ANGLE :
-			state += 1
-			beat_lengths.append(elapsed_time)
-			elapsed_time = 0.0
+			state += 1 # ... increment the state, ...
+			beat_lengths.append(elapsed_time) # ... record the length ...
+			elapsed_time = 0.0 # ... And reset the time
 			
 			# TESTING
 			#print("Pass, go to state "+str(state % beats))
 			#print(beat_lengths)
 			
+			# Here is where the BPM are calculated
 			estimated_bpm = (1/mean(beat_lengths)) * 60 \
 					if beat_lengths.size() < CALCULATION_WINDOW_SIZE \
 					else (1/mean(beat_lengths.slice(-CALCULATION_WINDOW_SIZE))) * 60
 			# TESTING
 			#print(estimated_bpm)
+	#endregion

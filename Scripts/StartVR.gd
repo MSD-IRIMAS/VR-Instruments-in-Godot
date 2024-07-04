@@ -1,13 +1,15 @@
 extends Node3D
 
-@onready var XRRig := $XRRig
-@onready var TestRig := $TestRig
+## Startup script for VR
 
-var xr_interface: XRInterface
+@onready var _XRRig := $XRRig
+@onready var _TestRig := $TestRig
+
+var _xr_interface: XRInterface
 
 func _ready():
-	xr_interface = XRServer.find_interface("OpenXR")
-	if xr_interface and xr_interface.is_initialized():
+	_xr_interface = XRServer.find_interface("OpenXR")
+	if _xr_interface and _xr_interface.is_initialized():
 		print("OpenXR initialized successfully")
 
 		# Turn off v-sync!
@@ -22,16 +24,16 @@ func _ready():
 
 
 func _activateXR():
-	XRRig.visible = true
-	XRRig.process_mode = Node.PROCESS_MODE_INHERIT
+	_XRRig.visible = true
+	_XRRig.process_mode = Node.PROCESS_MODE_INHERIT
 	
-	TestRig.visible = false
-	TestRig.process_mode = Node.PROCESS_MODE_DISABLED
+	_TestRig.visible = false
+	_TestRig.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _deactivateXR():
-	XRRig.visible = false
-	XRRig.process_mode = Node.PROCESS_MODE_DISABLED
+	_XRRig.visible = false
+	_XRRig.process_mode = Node.PROCESS_MODE_DISABLED
 	
-	TestRig.visible = true
-	TestRig.process_mode = Node.PROCESS_MODE_INHERIT
+	_TestRig.visible = true
+	_TestRig.process_mode = Node.PROCESS_MODE_INHERIT
