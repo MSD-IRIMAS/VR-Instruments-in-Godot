@@ -88,7 +88,7 @@ func _process(_delta : float) -> void:
 
 func _on_notes_note_begin(note: String, _velocity: float) -> void:
 	# TESTING 
-	#print(note + " note entered")
+	print(note + " note entered")
 	print(remap(_velocity, 0, MAX_SPEED, 0, 1))
 	Player.volume_db = linear_to_db(remap(_velocity, 0, MAX_SPEED, 0, 1))
 	

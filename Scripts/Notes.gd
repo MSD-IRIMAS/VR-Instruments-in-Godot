@@ -4,8 +4,8 @@ signal note_begin(note: String, velocity : float)
 signal note_end(note: String)
 
 func _get_velocity(body: Node3D) -> float:
-	if body.velocity != null :
-		return body.velocity
+	if body.has_method("get_velocity") :
+		return body.get_velocity()
 	else :
 		push_error(ERR_BUG)
 		return -1

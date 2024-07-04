@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh73lhl8ke6mn"]
+[gd_scene load_steps=9 format=3 uid="uid://dh73lhl8ke6mn"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_cxedf"]
 [ext_resource type="Script" path="res://Scripts/Hand.gd" id="1_v5w0t"]
 [ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="2_rqfxi"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_ffwpp"]
+[ext_resource type="PackedScene" uid="uid://bkv43ec6chcf3" path="res://addons/godot-xr-tools/hands/scenes/collision/collision_hand_left.tscn" id="3_x1bws"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_vh803"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_t6wot"]
+[ext_resource type="PackedScene" uid="uid://c3uoohvnshach" path="res://addons/godot-xr-tools/hands/scenes/collision/collision_hand_right.tscn" id="7_xtcxw"]
 
 [node name="XRRig" type="XROrigin3D"]
 
@@ -19,6 +21,8 @@ script = ExtResource("1_v5w0t")
 
 [node name="LeftHand" parent="LeftHand" instance=ExtResource("1_cxedf")]
 
+[node name="CollisionHandLeft" parent="LeftHand" instance=ExtResource("3_x1bws")]
+
 [node name="RightHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
@@ -29,5 +33,7 @@ script = ExtResource("1_v5w0t")
 [node name="MovementDirect" parent="RightHand" instance=ExtResource("3_ffwpp")]
 
 [node name="MovementTurn" parent="RightHand" instance=ExtResource("4_vh803")]
+
+[node name="CollisionHandRight" parent="RightHand" instance=ExtResource("7_xtcxw")]
 
 [node name="PlayerBody2" parent="." instance=ExtResource("5_t6wot")]
