@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 
 const MAX_SPEED := 4.0
 enum MODES {SINGLE_NOTE, POLYPHONIC, FOURIER_SINGLE}
