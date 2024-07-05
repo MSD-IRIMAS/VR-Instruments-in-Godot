@@ -1,8 +1,9 @@
 extends Node
 
-const MAX_SPEED := 4.0
+
 enum MODES {SINGLE_NOTE, POLYPHONIC, FOURIER_SINGLE}
 
+@export var MAX_SPEED := 4.0
 @export var movement := 0.01
 @export_enum("Single note", "Polyphonic", "Fourier serie single note") var mode : int
 
