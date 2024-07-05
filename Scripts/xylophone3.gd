@@ -1,10 +1,15 @@
 extends Node
+## The third version of the xylophone script.
+##
 ## The third version of the xylophone script, it handles polyphony by intenciating
-## note scripts with the right frequency to differents sound players.
-@export var MAX_SPEED := 5.0 # In m/s
-@export var movement := 0.01
+## note scripts with the right frequency to differents sound players. The frequency
+## and movement is tranfered by adding metadata to the note object which is then read
+## by the note script.
 
-@onready var Notes := $Notes
+@export var MAX_SPEED := 5.0 ## The speed needed to play at the maximum volume. In m/s.
+@export var movement := 0.01 ## The movement of the button when pressed. In meters.
+
+@onready var Notes := $Notes ## The node containing the notes
 
 
 func _on_notes_note_begin(note: String, _velocity: float) -> void:
