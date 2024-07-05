@@ -1,5 +1,15 @@
 extends Node
+## DEPRECATED: Use Xylophone3 instead
+##
+## The second version of the xylophone script it handles polyphony by intenciating
+## note scripts with the right frequency to differents sound players. The freqency
+## is tranfered by editing the source code and re-compileing it on the fly before
+## attaching this (new) script to the node
+##
+## @deprecated
 
+## A dictionary linking notes names to their difference in semitones to the 
+## reference note.
 const NOTES := {
 	"C" : -9.0,
 	"C#" : -8.0,
@@ -14,11 +24,11 @@ const NOTES := {
 	"A#" : 1.0,
 	"B" : 2.0
 }
-const A := 440.0
+const A := 440.0 ## The frenquency of the reference note, in Hertz.
 
-@onready var Notes := $Notes
+@onready var Notes := $Notes ## The node containing the notes
 
-var last_pulse := A
+var last_pulse := A ## The last recorded pulse, in Hertz.
 
 func _on_notes_note_begin(note: String, _velocity: float) -> void:
 	#TESTING print(note + " note entered")
