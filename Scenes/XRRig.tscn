@@ -22,6 +22,7 @@ script = ExtResource("1_v5w0t")
 [node name="LeftHand" parent="LeftHand" instance=ExtResource("1_cxedf")]
 
 [node name="CollisionHandLeft" parent="LeftHand" instance=ExtResource("3_x1bws")]
+collision_layer = 131074
 
 [node name="RightHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
@@ -35,5 +36,6 @@ script = ExtResource("1_v5w0t")
 [node name="MovementTurn" parent="RightHand" instance=ExtResource("4_vh803")]
 
 [node name="CollisionHandRight" parent="RightHand" instance=ExtResource("7_xtcxw")]
+collision_layer = 131074
 
 [node name="PlayerBody2" parent="." instance=ExtResource("5_t6wot")]
