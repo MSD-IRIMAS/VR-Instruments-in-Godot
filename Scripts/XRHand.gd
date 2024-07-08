@@ -128,11 +128,11 @@ func _deactivate_finger() -> void:
 
 func _on_button_pressed(name: String) -> void:
 	print("Button "+name+" pressed")
-	if name == "grip_button" : _activate_finger()
+	if name == "grip_click" : _activate_finger()
 	pass # Replace with function body.
 
 
 func _on_button_released(name: String) -> void:
 	print("Button "+name+" released")
-	if name == "grip_finger" : _deactivate_finger()
+	if name == "grip_click" : _deactivate_finger()
 	pass # Replace with function body.

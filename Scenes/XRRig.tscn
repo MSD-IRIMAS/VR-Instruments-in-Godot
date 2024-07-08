@@ -25,6 +25,10 @@ script = ExtResource("1_bep0k")
 
 [node name="LeftHand" parent="LeftHand" instance=ExtResource("1_cxedf")]
 
+[node name="MovementDirect" parent="LeftHand" instance=ExtResource("3_ffwpp")]
+max_speed = 2.0
+strafe = true
+
 [node name="FingerHitbox" type="AnimatableBody3D" parent="LeftHand"]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015, 0)
@@ -39,6 +43,7 @@ shape = SubResource("SphereShape3D_dp8ug")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0191629, -0.0411459, 0.0804193)
 collision_layer = 2
 collision_mask = 6
+sync_to_physics = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftHand/HandHitbox"]
 shape = SubResource("BoxShape3D_ngohn")
@@ -49,8 +54,6 @@ tracker = &"right_hand"
 script = ExtResource("1_bep0k")
 
 [node name="RightHand" parent="RightHand" instance=ExtResource("2_rqfxi")]
-
-[node name="MovementDirect" parent="RightHand" instance=ExtResource("3_ffwpp")]
 
 [node name="MovementTurn" parent="RightHand" instance=ExtResource("4_vh803")]
 
@@ -68,11 +71,14 @@ shape = SubResource("SphereShape3D_dp8ug")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0173337, -0.0411459, 0.0804193)
 collision_layer = 2
 collision_mask = 6
+sync_to_physics = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightHand/HandHitbox"]
 shape = SubResource("BoxShape3D_ngohn")
 
-[node name="PlayerBody2" parent="." instance=ExtResource("5_t6wot")]
+[node name="PlayerBody" parent="." instance=ExtResource("5_t6wot")]
+collision_layer = 524289
+collision_mask = 5
 
 [connection signal="button_pressed" from="LeftHand" to="LeftHand" method="_on_button_pressed"]
 [connection signal="button_released" from="LeftHand" to="LeftHand" method="_on_button_released"]
