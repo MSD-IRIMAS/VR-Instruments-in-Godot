@@ -44,6 +44,9 @@ var elapsed_time := 0.0 ## The elapsed time in seconds since the last recorded b
 var beat_lengths : Array[float] = [] ## The lengths of recorded beats.
 var estimated_bpm : float ## The estimated pulse in beats per minute.
 
+@onready var _FingerHitbox := $FingerHitbox
+@onready var _HandHitbox := $HandHitbox
+
 ## Calculates the mean value of the passed list.
 func mean(list : Array) -> float:
 	var ret := 0.0
@@ -113,11 +116,23 @@ func _physics_process(delta) -> void:
 	#endregion
 
 
-func _on_button_pressed(name: String):
+func _activate_finger() -> void:
+	_FingerHitbox.process_mode = Node.PROCESS_MODE_INHERIT
+	_HandHitbox.process_mode = Node.PROCESS_MODE_DISABLED
+	pass
+
+func _deactivate_finger() -> void:
+	_FingerHitbox.process_mode = Node.PROCESS_MODE_DISABLED
+	_HandHitbox.process_mode = Node.PROCESS_MODE_INHERIT
+	pass
+
+func _on_button_pressed(name: String) -> void:
 	print("Button "+name+" pressed")
+	if name == "grip_button" : _activate_finger()
 	pass # Replace with function body.
 
 
-func _on_button_released(name: String):
+func _on_button_released(name: String) -> void:
 	print("Button "+name+" released")
+	if name == "grip_finger" : _deactivate_finger()
 	pass # Replace with function body.

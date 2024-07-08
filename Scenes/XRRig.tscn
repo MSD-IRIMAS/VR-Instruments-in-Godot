@@ -26,6 +26,7 @@ script = ExtResource("1_bep0k")
 [node name="LeftHand" parent="LeftHand" instance=ExtResource("1_cxedf")]
 
 [node name="FingerHitbox" type="AnimatableBody3D" parent="LeftHand"]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015, 0)
 collision_layer = 2
 collision_mask = 6
@@ -54,6 +55,7 @@ script = ExtResource("1_bep0k")
 [node name="MovementTurn" parent="RightHand" instance=ExtResource("4_vh803")]
 
 [node name="FingerHitbox" type="AnimatableBody3D" parent="RightHand"]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015, 0)
 collision_layer = 2
 collision_mask = 6
