@@ -1,4 +1,12 @@
 extends Area3D
+## DEPRECATED: use note2 instead (and see xylophone2 for more information)
+##
+## First version of the note script meant to be dynamicaly attached and detached
+## of the notes objects as they are activated of deactivated.
+## This source code is disigned to be dynamicaly changed to pass information
+## between the instenciator and the instance (see xylophone2 for more information)
+##
+## @deprecated
 
 var Player : AudioStreamPlayer3D = null
 var mesh : MeshInstance3D = null

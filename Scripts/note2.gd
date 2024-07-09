@@ -2,6 +2,8 @@ extends Area3D
 ## Second version of the note script meant to be dynamicaly attached and detached
 ## of the notes objects as they are activated of deactivated.
 ##
+## Second version of the note script meant to be dynamicaly attached and detached
+## of the notes objects as they are activated of deactivated.
 ## This version use metadata to pass information and customize the scipt instead
 ## of dynamicaly changing the source code.
 
