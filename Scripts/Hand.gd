@@ -34,6 +34,9 @@ var velocity : float
 ## All the recorded positions, staring with the starting position.
 @onready var recorded_positions : Array[Vector3] = [position]
 
+var _FingerHitbox : Node
+var _HandHitbox : Node
+
 @export_range(2, 4) var beats := 2 ## The number of beats per bar.
 var state := 0 ## The current beat minus one.
 
@@ -55,6 +58,9 @@ func get_velocity() -> float:
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if get_node(".") is XRController3D:
+		_FingerHitbox = $FingerHitbox
+		_HandHitbox = $HandHitbox
 	pass # Replace with function body.
 
 
@@ -108,3 +114,24 @@ func _physics_process(delta) -> void:
 			# TESTING
 			#print(estimated_bpm)
 	#endregion
+
+func _activate_finger() -> void:
+	_FingerHitbox.process_mode = Node.PROCESS_MODE_INHERIT
+	_HandHitbox.process_mode = Node.PROCESS_MODE_DISABLED
+	pass
+
+func _deactivate_finger() -> void:
+	_FingerHitbox.process_mode = Node.PROCESS_MODE_DISABLED
+	_HandHitbox.process_mode = Node.PROCESS_MODE_INHERIT
+	pass
+
+func _on_button_pressed(name: String) -> void:
+	print("Button "+name+" pressed")
+	if name == "grip_click" : _activate_finger()
+	pass # Replace with function body.
+
+
+func _on_button_released(name: String) -> void:
+	print("Button "+name+" released")
+	if name == "grip_click" : _deactivate_finger()
+	pass # Replace with function body.
