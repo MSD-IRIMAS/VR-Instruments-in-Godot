@@ -118,20 +118,22 @@ func _physics_process(delta) -> void:
 func _activate_finger() -> void:
 	_FingerHitbox.process_mode = Node.PROCESS_MODE_INHERIT
 	_HandHitbox.process_mode = Node.PROCESS_MODE_DISABLED
-	pass
+
 
 func _deactivate_finger() -> void:
 	_FingerHitbox.process_mode = Node.PROCESS_MODE_DISABLED
 	_HandHitbox.process_mode = Node.PROCESS_MODE_INHERIT
-	pass
+
 
 func _on_button_pressed(name: String) -> void:
-	print("Button "+name+" pressed")
+	# TESTING
+	#print("Button "+name+" pressed")
 	if name == "grip_click" : _activate_finger()
-	pass # Replace with function body.
+
 
 
 func _on_button_released(name: String) -> void:
-	print("Button "+name+" released")
+	# TESTING
+	#print("Button "+name+" released")
 	if name == "grip_click" : _deactivate_finger()
-	pass # Replace with function body.
+
