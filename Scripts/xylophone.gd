@@ -5,7 +5,8 @@ enum MODES {SINGLE_NOTE, POLYPHONIC, FOURIER_SINGLE}
 
 @export var MAX_SPEED := 4.0
 @export var movement := 0.01
-@export_enum("Single note", "Polyphonic", "Fourier serie single note") var mode : int
+@export var mode := MODES.SINGLE_NOTE
+@export var instrument := Music.INSTRUMENTS_NAMES.SINE
 
 @onready var Notes := $Notes
 @onready var Player := $Player
@@ -14,7 +15,9 @@ var sample_hz := 22050.0 # Keep the number of samples to mix low, GDScript is no
 var pulse_hz := 440.0
 var phase := 0.0
 var active_notes : Array[String] = []
-var instrument := FourierSerie.new(Music.INSTRUMENTS.SINE, 440)
+var instrument_serie := FourierSerie.new( \
+		Music.INSTRUMENTS[Music.INSTRUMENTS_NAMES.find_key(instrument)], \
+		440)
 
 var playback : AudioStreamPlayback = null
 var playing := false
@@ -85,7 +88,7 @@ func _process(_delta : float) -> void:
 	if playing : 
 		if mode == MODES.SINGLE_NOTE: fill_buffer()
 		if mode == MODES.POLYPHONIC: fill_buffer_polyphonic()
-		if mode == MODES.FOURIER_SINGLE: fill_buffer_serie(instrument)
+		if mode == MODES.FOURIER_SINGLE: fill_buffer_serie(instrument_serie)
 
 func _on_notes_note_begin(note: String, _velocity: float) -> void:
 	# TESTING 
@@ -101,7 +104,7 @@ func _on_notes_note_begin(note: String, _velocity: float) -> void:
 	active_notes.append(note)
 	pulse_hz = Music.A * (1 + Music.NOTES[note]/12) if Music.NOTES[note] >= 0 \
 			else Music.A * 1/(2**(-Music.NOTES[note]/12))
-	instrument.base_pulse = pulse_hz
+	instrument_serie.base_pulse = pulse_hz
 	# TESTING 
 	#print(pulse_hz)
 	

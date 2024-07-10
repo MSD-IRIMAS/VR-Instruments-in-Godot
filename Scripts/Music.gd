@@ -32,7 +32,7 @@ const A := 440.0
 ## musical instruments.
 const INSTRUMENTS := {
 	"SINE" = [1.0],
-	"SQARE" = [1, 0.5, 0.25, 0.0125],
+	"TRIANGLE" = [1, 0.5, 0.25, 0.0125],
 	"FLUTE" = [1, 9, 4.6, 1.75, 0.25, 0.1],
 	"OOBE" = [1, 0.95, 2.1, 0.2, 0.21, 0.25, 0.55, 0.3, 0.25, 0.01],
 	"CLARINET" = [1, 0.375, 0.275, 0.01, 0.075, 0.2, 0.025],
@@ -40,3 +40,5 @@ const INSTRUMENTS := {
 	"GUITAR" = [1, 0.675, 1.25, 0.125, 0.125, 0.12, 0.01, 0.025, 0.175, 0.075, 0.02],
 	"PIANO" = [1, 0.1, 0.325, 0.075, 0.7, 0.6, 0, 0.5]
 }
+
+enum INSTRUMENTS_NAMES {SINE, TRIANGLE, FLUTE, OOBE, CLARINET, HORN, GUITAR, PIANO}
