@@ -20,7 +20,7 @@ material = SubResource("StandardMaterial3D_h223u")
 size = Vector3(0.95, 0.025, 0.025)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cv7uf"]
-size = Vector3(0.2, 1.4, 0.05)
+size = Vector3(0.2, 1.3, 0.05)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgq5e"]
 albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
@@ -28,7 +28,7 @@ albedo_texture = ExtResource("2_oejl1")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ud4au"]
 material = SubResource("StandardMaterial3D_hgq5e")
-size = Vector3(0.2, 1.4, 0.05)
+size = Vector3(0.2, 1.3, 0.05)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tjqd7"]
 material = SubResource("StandardMaterial3D_h223u")
@@ -148,7 +148,7 @@ script = ExtResource("1_yiwwa")
 [node name="Base" type="Node3D" parent="."]
 
 [node name="Table" type="StaticBody3D" parent="Base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32947, 0)
 collision_layer = 4
 collision_mask = 3
 
@@ -172,7 +172,7 @@ transform = Transform3D(-0.0573724, 0, 0.998353, 0, 1, 0, -0.998353, 0, -0.05737
 mesh = SubResource("BoxMesh_lcgev")
 
 [node name="Leg" type="StaticBody3D" parent="Base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.765154, 0.469162)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0.469)
 collision_layer = 4
 collision_mask = 3
 
@@ -183,7 +183,7 @@ shape = SubResource("BoxShape3D_cv7uf")
 mesh = SubResource("BoxMesh_ud4au")
 
 [node name="Leg2" type="StaticBody3D" parent="Base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.765474, -0.460903)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, -0.461)
 collision_layer = 4
 collision_mask = 3
 
@@ -194,7 +194,7 @@ shape = SubResource("BoxShape3D_cv7uf")
 mesh = SubResource("BoxMesh_ud4au")
 
 [node name="Notes" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32873, 0)
 script = ExtResource("3_vdowm")
 
 [node name="C" type="Area3D" parent="Notes"]
