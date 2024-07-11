@@ -35,7 +35,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10,
 
 [node name="Xylophone" parent="." instance=ExtResource("3_o4vnx")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -5)
-instrument = 2
+mode = 2
+instrument = 1
 
 [node name="Xylophone3" parent="." instance=ExtResource("5_wf7vt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
@@ -43,3 +44,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 [node name="TestRig" parent="." instance=ExtResource("2_2rxwd")]
 
 [node name="XRRig" parent="." instance=ExtResource("2_1nm5d")]
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41134, 1.89153, 0)
+text = "3"
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79488, -5.6693)
+text = "1"
