@@ -11,13 +11,14 @@ enum MODES {SINGLE_NOTE, POLYPHONIC, FOURIER_SINGLE}
 @onready var Notes := $Notes
 @onready var Player := $Player
 
+@onready var instrument_serie := FourierSerie.new( \
+		Music.INSTRUMENTS[Music.INSTRUMENTS_NAMES.find_key(instrument)], \
+		440)
+
 var sample_hz := 22050.0 # Keep the number of samples to mix low, GDScript is not super fast.
 var pulse_hz := 440.0
 var phase := 0.0
 var active_notes : Array[String] = []
-var instrument_serie := FourierSerie.new( \
-		Music.INSTRUMENTS[Music.INSTRUMENTS_NAMES.find_key(instrument)], \
-		440)
 
 var playback : AudioStreamPlayback = null
 var playing := false
