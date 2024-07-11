@@ -1,5 +1,5 @@
 class_name FourierSerie
-## A Fourier's Serie, used here to reporduce any sound
+## A Fourier's Serie, used here to (try to) reporduce any sound
 
 var sin_coefs : Array ## The sine coeficients
 var cos_coefs : Array ## The cosine coeficients

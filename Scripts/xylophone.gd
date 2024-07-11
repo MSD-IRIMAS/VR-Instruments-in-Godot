@@ -23,8 +23,7 @@ var active_notes : Array[String] = []
 var playback : AudioStreamPlayback = null
 var playing := false
 
-
-func _ready() -> void:
+func _reset_buffer() -> void:
 	# Setting mix rate is only possible before play().
 	Player.stream.mix_rate = sample_hz
 	Player.play()
@@ -32,6 +31,9 @@ func _ready() -> void:
 	# WARNING `_fill_buffer` must be called *after* setting `playback`,
 	# as `fill_buffer` uses the `playback` member variable.
 	#_fill_buffer()
+
+func _ready() -> void:
+	_reset_buffer()
 
 
 func fill_buffer() -> void:
@@ -93,7 +95,7 @@ func _process(_delta : float) -> void:
 
 func _on_notes_note_begin(note: String, _velocity: float) -> void:
 	# TESTING 
-	print(note + " note entered")
+	#print(note + " note entered")
 	#print(remap(_velocity, 0, MAX_SPEED, 0, 1))
 	Player.volume_db = linear_to_db(remap(_velocity, 0, MAX_SPEED, 0, 1))
 	
@@ -107,9 +109,9 @@ func _on_notes_note_begin(note: String, _velocity: float) -> void:
 			else Music.A * 1/(2**(-Music.NOTES[note]/12))
 	instrument_serie.base_pulse = pulse_hz
 	# TESTING 
-	print(instrument_serie.base_pulse)
+	#print(instrument_serie.base_pulse)
 	
-	_ready()
+	_reset_buffer()
 	playing = true
 
 
