@@ -1,8 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://dd0yr8g44abf6"]
+[gd_scene load_steps=39 format=3 uid="uid://dd0yr8g44abf6"]
 
 [ext_resource type="Texture2D" uid="uid://dl1jm3fruidp2" path="res://Textures/pattern.png" id="1_6rwhk"]
 [ext_resource type="Script" path="res://Scripts/xylophone.gd" id="1_ll4k8"]
 [ext_resource type="Script" path="res://Scripts/Notes.gd" id="3_gbcmb"]
+[ext_resource type="PackedScene" uid="uid://bsfh0nniwedjo" path="res://Scenes/button.tscn" id="4_0wn7q"]
+[ext_resource type="Script" path="res://Scenes/ButtonManager.gd" id="4_02ro7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4tjej"]
 size = Vector3(0.2, 0.05, 1)
@@ -328,6 +330,13 @@ stream = SubResource("AudioStreamGenerator_j2m1n")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.25, 1.65, 0)
 text = "1"
 
+[node name="Buttons" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.135108, 1.26207, 0.469126)
+script = ExtResource("4_02ro7")
+
+[node name="Instruments" parent="Buttons" instance=ExtResource("4_0wn7q")]
+label = "InstrumentS"
+
 [connection signal="note_begin" from="Notes" to="." method="_on_notes_note_begin"]
 [connection signal="note_end" from="Notes" to="." method="_on_notes_note_end"]
 [connection signal="body_entered" from="Notes/C" to="Notes" method="_on_c_body_entered"]
@@ -354,3 +363,4 @@ text = "1"
 [connection signal="body_exited" from="Notes/A#" to="Notes" method="_on_a_sharp_body_exited"]
 [connection signal="body_entered" from="Notes/B" to="Notes" method="_on_b_body_entered"]
 [connection signal="body_exited" from="Notes/B" to="Notes" method="_on_b_body_exited"]
+[connection signal="body_entered" from="Buttons/Instruments" to="Buttons" method="_on_instruments_body_entered"]

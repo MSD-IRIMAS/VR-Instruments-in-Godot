@@ -16,10 +16,8 @@ size = Vector3(0.275, 0.05, 0.025)
 
 [node name="Button" type="Area3D"]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_gu1sl")
-label = "LabeL"
-movement = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_8nn8m")
@@ -30,7 +28,7 @@ mesh = SubResource("BoxMesh_ufcwk")
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0129111)
 pixel_size = 0.001
-text = "LabeL"
+text = "Label"
 uppercase = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

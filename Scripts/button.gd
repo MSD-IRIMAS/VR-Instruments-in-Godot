@@ -1,14 +1,16 @@
 @tool
 extends Area3D
 
+signal node_entered(emitter : String)
+
 const CHAR_LENGTH := 0.025
 
 @export var label := "Label" :
 	set(newLabel):
 		label = newLabel
-		_label_object.text = label
+		if _label_object != null : _label_object.text = label
 		print("New label: "+label)
-		update_size(newLabel)
+		if _label_object != null : update_size(newLabel)
 @export var movement := 0.01
 
 @onready var _hitbox : CollisionShape3D = $CollisionShape3D
@@ -21,9 +23,11 @@ func update_size(newLabel : String):
 
 func _ready():
 	_label_object.text = label
+	update_size(label)
 
 func _on_body_entered(_body):
 	position.z -= movement
+	node_entered.emit(name)
 	pass # Replace with function body.
 
 
