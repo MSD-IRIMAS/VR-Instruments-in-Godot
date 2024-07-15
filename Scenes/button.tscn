@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsfh0nniwedjo"]
+
+[ext_resource type="Script" path="res://Scripts/button.gd" id="1_gu1sl"]
+[ext_resource type="Texture2D" uid="uid://dl1jm3fruidp2" path="res://Textures/pattern.png" id="1_tbk6k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8nn8m"]
+size = Vector3(0.125, 0.05, 0.025)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14nis"]
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+albedo_texture = ExtResource("1_tbk6k")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ufcwk"]
+material = SubResource("StandardMaterial3D_14nis")
+size = Vector3(0.125, 0.05, 0.025)
+
+[node name="Button" type="Area3D"]
+script = ExtResource("1_gu1sl")
+label = "LabeL"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8nn8m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ufcwk")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0129111)
+pixel_size = 0.001
+text = "LabeL"
+uppercase = true
