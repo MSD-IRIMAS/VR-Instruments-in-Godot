@@ -28,11 +28,13 @@ func _ready():
 	update_size(label)
 
 func _on_body_entered(_body):
-	position.z -= movement
+	_mesh.position.z -= movement
+	_label_object.position.z -= movement
 	node_entered.emit(name)
 	pass # Replace with function body.
 
 
-func _on_body_exited(body):
-	position.z += movement
+func _on_body_exited(_body):
+	_mesh.position.z += movement
+	_label_object.position.z += movement
 	pass # Replace with function body.
