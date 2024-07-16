@@ -76,6 +76,16 @@ func _physics_process(delta : float) -> void:
 		right_hand.visible = false
 		right_hand.process_mode = Node.PROCESS_MODE_DISABLED
 	
+	#Handle couching
+	if Input.is_action_just_pressed("debug_shift"):
+		position.y /= 2
+		$Camera3D.position.y /= 2
+		$CollisionShape3D.shape.height /= 2
+	if Input.is_action_just_released("debug_shift"):
+		$Camera3D.position.y *= 2
+		$CollisionShape3D.shape.height *= 2
+		position.y *= 2
+	
 	#Handle mouse rotation activation
 	_rotating = true if Input.is_action_pressed("debug_rotate") else false
 
