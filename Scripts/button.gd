@@ -23,6 +23,8 @@ func update_size(newLabel : String):
 
 func _ready():
 	_label_object.text = label
+	_hitbox.shape = _hitbox.shape.duplicate()
+	_mesh.mesh = _mesh.mesh.duplicate()
 	update_size(label)
 
 func _on_body_entered(_body):
