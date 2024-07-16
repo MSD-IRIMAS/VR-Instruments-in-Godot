@@ -6,7 +6,14 @@ enum MODES {SINGLE_NOTE, POLYPHONIC, FOURIER_SINGLE}
 @export var MAX_SPEED := 4.0
 @export var movement := 0.01
 @export var mode := MODES.SINGLE_NOTE
-@export var instrument := Music.INSTRUMENTS_NAMES.SINE
+@export var instrument := Music.INSTRUMENTS_NAMES.SINE :
+	set(new_instrument):
+		print("New instrument: "+Music.INSTRUMENTS_NAMES.find_key(new_instrument))
+		instrument = new_instrument
+		instrument_serie = FourierSerie.new( \
+		Music.INSTRUMENTS[Music.INSTRUMENTS_NAMES.find_key(instrument)], \
+		440)
+		$Label3D.text = Music.INSTRUMENTS_NAMES.find_key(instrument)
 
 @onready var Notes := $Notes
 @onready var Player := $Player

@@ -18,19 +18,22 @@ func _ready():
 		add_child(button)
 		padding += PADDING
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_instruments_body_entered(_body):
 	if buttons_shown:
 		print("Hide buttons")
 		buttons_shown = false
+		for i in Music.INSTRUMENTS.keys():
+			var button : Node3D = find_child(i, true, false)
+			button.visible = false
+			button.process_mode = Node.PROCESS_MODE_DISABLED
 	else:
 		print("Show buttons")
 		buttons_shown = true 
+		for i in Music.INSTRUMENTS.keys():
+			var button : Node3D = find_child(i, true, false)
+			button.visible = true
+			button.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_node_entered(emitter: String):
 	print(emitter+" pressed")
+	get_parent().instrument = Music.INSTRUMENTS_NAMES.get(emitter)
