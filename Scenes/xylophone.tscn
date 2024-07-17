@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/xylophone.gd" id="1_ll4k8"]
 [ext_resource type="Script" path="res://Scripts/Notes.gd" id="3_gbcmb"]
 [ext_resource type="PackedScene" uid="uid://bsfh0nniwedjo" path="res://Scenes/button.tscn" id="4_0wn7q"]
-[ext_resource type="Script" path="res://Scenes/ButtonManager.gd" id="4_02ro7"]
+[ext_resource type="Script" path="res://Scripts/ButtonManager.gd" id="4_02ro7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4tjej"]
 size = Vector3(0.2, 0.05, 1)
