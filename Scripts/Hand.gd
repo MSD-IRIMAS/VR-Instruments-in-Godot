@@ -40,6 +40,7 @@ var _HandHitbox : Node
 @export_range(2, 4) var beats := 2 ## The number of beats per bar.
 var state := 0 ## The current beat minus one.
 
+var active := false ## Weather or not if the beat detection system is active
 var elapsed_time := 0.0 ## The elapsed time in seconds since the last recorded beat.
 var beat_lengths : Array[float] = [] ## The lengths of recorded beats.
 var estimated_bpm : float ## The estimated pulse in beats per minute.
@@ -79,7 +80,7 @@ func _physics_process(delta) -> void:
 	#region beat detection
 	# If the length between the two last points is longer than the minimun distance
 	# and if the velocity is lower than the minimum speed...
-	if (recorded_positions[-1] - position).length() >= MIN_DISTANCE \
+	if active and (recorded_positions[-1] - position).length() >= MIN_DISTANCE \
 	and velocity <= MIN_SPEED:
 		# ...Add the position to the record
 		recorded_positions.append(position)
@@ -118,11 +119,13 @@ func _physics_process(delta) -> void:
 func _activate_finger() -> void:
 	_FingerHitbox.process_mode = Node.PROCESS_MODE_INHERIT
 	_HandHitbox.process_mode = Node.PROCESS_MODE_DISABLED
+	active = true
 
 
 func _deactivate_finger() -> void:
 	_FingerHitbox.process_mode = Node.PROCESS_MODE_DISABLED
 	_HandHitbox.process_mode = Node.PROCESS_MODE_INHERIT
+	active = false
 
 
 func _on_button_pressed(name: String) -> void:

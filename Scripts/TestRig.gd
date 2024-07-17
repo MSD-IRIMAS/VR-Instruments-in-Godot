@@ -64,7 +64,9 @@ func _physics_process(delta : float) -> void:
 		left_hand.visible = true
 		left_hand.process_mode = Node.PROCESS_MODE_INHERIT
 		left_hand.global_position = pos
+		left_hand.active = true
 	else: 
+		left_hand.active = false
 		left_hand.visible = false
 		left_hand.process_mode = Node.PROCESS_MODE_DISABLED
 	
@@ -72,7 +74,9 @@ func _physics_process(delta : float) -> void:
 		right_hand.visible = true
 		right_hand.process_mode = Node.PROCESS_MODE_INHERIT
 		right_hand.global_position = pos
+		right_hand.active = true
 	else: 
+		right_hand.active = false
 		right_hand.visible = false
 		right_hand.process_mode = Node.PROCESS_MODE_DISABLED
 	
