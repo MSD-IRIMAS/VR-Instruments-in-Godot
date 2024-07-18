@@ -113,7 +113,7 @@ func _physics_process(delta) -> void:
 					if beat_lengths.size() < CALCULATION_WINDOW_SIZE \
 					else (1/mean(beat_lengths.slice(-CALCULATION_WINDOW_SIZE))) * 60
 			# TESTING
-			#print(estimated_bpm)
+			print(estimated_bpm)
 	#endregion
 
 func _activate_finger() -> void:
