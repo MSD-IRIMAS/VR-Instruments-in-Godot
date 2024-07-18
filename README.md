@@ -27,7 +27,7 @@ English verison [on top](#vr-instruments-in-godot-an-experiment-on-sound-synthes
 ## Acquiescements
 Ce logiciel utilise:
 - L'IPA [OpenXR™](https://github.com/KhronosGroup/OpenXR-Docs) pour communiquer avec le casque de Réalité Virtuelle (RV).[(Licences)](https://github.com/KhronosGroup/OpenXR-Docs/tree/main/LICENSES)
-- Les [Outils XR de Godot](https://github.com/GodotVR/godot-xr-tools) pour tout ce qui est lié à la RV? [(Licence)](https://github.com/GodotVR/godot-xr-tools/blob/master/LICENSE)
+- Les [Outils XR de Godot](https://github.com/GodotVR/godot-xr-tools) pour tout ce qui est lié à la RV. [(Licence)](https://github.com/GodotVR/godot-xr-tools/blob/master/LICENSE)
 - Le [Moteur de Jeu Godot](https://github.com/godotengine/godot) pour tout le reste. [(Licence)](https://github.com/godotengine/godot/blob/master/LICENSE.txt)
 
 ## Instalation
