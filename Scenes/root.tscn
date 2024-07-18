@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dl1jm3fruidp2" path="res://Textures/pattern.png" id="1_fdlpq"]
 [ext_resource type="Script" path="res://Scripts/StartVR.gd" id="1_xum33"]
-[ext_resource type="PackedScene" uid="uid://dh73lhl8ke6mn" path="res://Scenes/XRRig.tscn" id="2_1nm5d"]
-[ext_resource type="PackedScene" uid="uid://cxfrfhtaagj3c" path="res://Scenes/TestRig.tscn" id="2_2rxwd"]
-[ext_resource type="PackedScene" uid="uid://dd0yr8g44abf6" path="res://Scenes/xylophone.tscn" id="3_o4vnx"]
-[ext_resource type="PackedScene" uid="uid://10epodhxx2j1" path="res://Scenes/xylophone3.tscn" id="5_wf7vt"]
+[ext_resource type="PackedScene" uid="uid://dh73lhl8ke6mn" path="res://Scenes/Rigs/XRRig.tscn" id="2_1nm5d"]
+[ext_resource type="PackedScene" uid="uid://cxfrfhtaagj3c" path="res://Scenes/Rigs/TestRig.tscn" id="2_2rxwd"]
+[ext_resource type="PackedScene" uid="uid://dd0yr8g44abf6" path="res://Scenes/Instruments/xylophone.tscn" id="3_o4vnx"]
+[ext_resource type="PackedScene" uid="uid://10epodhxx2j1" path="res://Scenes/Instruments/xylophone3.tscn" id="5_wf7vt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4vs27"]
 

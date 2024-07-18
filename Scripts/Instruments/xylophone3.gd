@@ -17,7 +17,7 @@ func _on_notes_note_begin(note: String, _velocity: float) -> void:
 	#print(note + " note entered")
 	
 	var note_object := Notes.find_child(note) as Area3D
-	var script := load("res://Scripts/note2.gd") as Script
+	var script := load("res://Scripts/Technical scripts/note2.gd") as Script
 	var pulse: float = Music.A * (1 + Music.NOTES[note]/12) if Music.NOTES[note] >= 0 \
 			else Music.A * 1/(2**(-Music.NOTES[note]/12))
 	

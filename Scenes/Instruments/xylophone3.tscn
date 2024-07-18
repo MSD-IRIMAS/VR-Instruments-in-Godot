@@ -1,6 +1,6 @@
 [gd_scene load_steps=48 format=3 uid="uid://10epodhxx2j1"]
 
-[ext_resource type="Script" path="res://Scripts/xylophone3.gd" id="1_n3kub"]
+[ext_resource type="Script" path="res://Scripts/Instruments/xylophone3.gd" id="1_n3kub"]
 [ext_resource type="Texture2D" uid="uid://dl1jm3fruidp2" path="res://Textures/pattern.png" id="2_k1tb4"]
 [ext_resource type="Script" path="res://Scripts/Notes.gd" id="3_cebkr"]
 

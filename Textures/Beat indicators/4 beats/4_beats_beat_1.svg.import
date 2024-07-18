@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c722wsrdi5uqi"
-path.s3tc="res://.godot/imported/3_beats_beat_2.svg-1ed9331f6416a704ab359c159b3c8e0b.s3tc.ctex"
+uid="uid://dkbukl747sord"
+path.s3tc="res://.godot/imported/4_beats_beat_1.svg-d1aed8aa701722b4011c042e0995621b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/3_beats_beat_2.svg"
-dest_files=["res://.godot/imported/3_beats_beat_2.svg-1ed9331f6416a704ab359c159b3c8e0b.s3tc.ctex"]
+source_file="res://Textures/Beat indicators/4 beats/4_beats_beat_1.svg"
+dest_files=["res://.godot/imported/4_beats_beat_1.svg-d1aed8aa701722b4011c042e0995621b.s3tc.ctex"]
 
 [params]
 

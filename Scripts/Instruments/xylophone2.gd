@@ -32,7 +32,7 @@ var last_pulse := A ## The last recorded pulse, in Hertz.
 
 func _on_notes_note_begin(note: String, _velocity: float) -> void:
 	#TESTING print(note + " note entered")
-	var script := load("res://Scripts/note.gd") as Script
+	var script := load("res://Scripts/Technical scripts/note.gd") as Script
 	var pulse : float
 	if NOTES[note] >= 0: 
 		pulse = A * (1 + NOTES[note]/12)
