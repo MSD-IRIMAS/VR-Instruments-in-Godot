@@ -1,20 +1,22 @@
 extends Node3D
+## Shows an estimation of the current beats per minute (BPM) and how to measure it
+##
+## The name of this script is a little deciving as it only shows the current
+## BPM and the movements needed to measure it. The real BPM estimation is done in
+## the "beat detection" region of the Hand script.
 
 @onready var _label = $Label3D
 @onready var _sprite = $AnimatedSprite3D
 
-var followed_nodes : Array[Node3D] = []
-var main_node : Node3D = null
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var followed_nodes : Array[Node3D] = [] ## The eligible nodes to be used
+var main_node : Node3D = null ## The currently used node
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta : float) -> void:
 	main_node = null
 	
+	# Go trough the nodes to find one active
 	for node : Node3D in followed_nodes:
 		if node.active and main_node == null : main_node = node
 		elif node.active and main_node != null : 
