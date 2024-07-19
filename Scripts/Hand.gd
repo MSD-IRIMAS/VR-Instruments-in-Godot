@@ -105,7 +105,7 @@ func _physics_process(delta) -> void:
 			elapsed_time = 0.0 # ... And reset the time
 			
 			# TESTING
-			#print("Pass, go to state "+str(state % beats))
+			print("Pass, go to state "+str(state % beats))
 			#print(beat_lengths)
 			
 			# Here is where the BPM are calculated

@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://bere5gxm6bd48"]
+[gd_scene load_steps=17 format=3 uid="uid://bere5gxm6bd48"]
 
 [ext_resource type="Texture2D" uid="uid://dl1jm3fruidp2" path="res://Textures/pattern.png" id="1_403kr"]
+[ext_resource type="Script" path="res://Scenes/bpm_detector.gd" id="1_a4kkf"]
 [ext_resource type="Texture2D" uid="uid://i85cmtubf3yp" path="res://Textures/Beat indicators/2 beats/2_beats_beat_1.svg" id="2_06gq4"]
 [ext_resource type="Texture2D" uid="uid://dpg5c0m7t41yi" path="res://Textures/Beat indicators/2 beats/2_beats_beat_2.svg" id="3_dm1vq"]
 [ext_resource type="Texture2D" uid="uid://2epfgqx7cqm8" path="res://Textures/Beat indicators/3 beats/3_beats_beat_1.svg" id="4_j7exj"]
@@ -67,7 +68,11 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uo31q"]
+size = Vector3(1, 2, 1)
+
 [node name="BPMDetector" type="Node3D"]
+script = ExtResource("1_a4kkf")
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
@@ -81,10 +86,23 @@ skeleton = NodePath("../..")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1)
-text = "0"
+text = "Stand on the 
+platform to begin"
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -1)
+visible = false
 pixel_size = 0.001
 sprite_frames = SubResource("SpriteFrames_ai08f")
 animation = &"2 beats"
+
+[node name="DetectionZone" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_uo31q")
+
+[connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
+[connection signal="body_exited" from="DetectionZone" to="." method="_on_detection_zone_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cd10qbghiv7u7"]
+[gd_scene load_steps=14 format=3 uid="uid://cd10qbghiv7u7"]
 
 [ext_resource type="Texture2D" uid="uid://dl1jm3fruidp2" path="res://Textures/pattern.png" id="1_fdlpq"]
 [ext_resource type="Script" path="res://Scripts/StartVR.gd" id="1_xum33"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxfrfhtaagj3c" path="res://Scenes/Rigs/TestRig.tscn" id="2_2rxwd"]
 [ext_resource type="PackedScene" uid="uid://dd0yr8g44abf6" path="res://Scenes/Instruments/xylophone.tscn" id="3_o4vnx"]
 [ext_resource type="PackedScene" uid="uid://10epodhxx2j1" path="res://Scenes/Instruments/xylophone3.tscn" id="5_wf7vt"]
+[ext_resource type="PackedScene" uid="uid://bere5gxm6bd48" path="res://Scenes/bpm_detector.tscn" id="5_ykr68"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4vs27"]
 
@@ -52,6 +53,9 @@ instrument = 1
 
 [node name="Xylophone3" parent="." instance=ExtResource("5_wf7vt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.25, 0)
+
+[node name="BPMDetector" parent="." instance=ExtResource("5_ykr68")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0.25, 0)
 
 [node name="TestRig" parent="." instance=ExtResource("2_2rxwd")]
 

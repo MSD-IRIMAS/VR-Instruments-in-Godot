@@ -144,7 +144,7 @@ func _on_notes_note_end(note: String) -> void:
 	var mesh := _Notes.find_child(note).get_node("MeshInstance3D") as MeshInstance3D
 	mesh.position.y += movement
 	
-	_active_notes.remove_at(_active_notes.find(note))
+	_active_notes.erase(note)
 	
 	_playing = false
 	#Player.stop()
