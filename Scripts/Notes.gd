@@ -4,10 +4,10 @@ signal note_begin(note: String, velocity : float)
 signal note_end(note: String)
 
 func _get_velocity(body: Node3D) -> float:
-	if body.has_method("get_velocity") :
-		return body.get_velocity()
-	elif body.get_parent().has_method("get_velocity") :
-		return body.get_parent().get_velocity()
+	if body is Hand :
+		return body.velocity
+	elif body.get_parent() is Hand :
+		return body.get_parent().velocity
 	else :
 		push_error(ERR_BUG)
 		return -1

@@ -1,3 +1,4 @@
+class_name Hand
 extends Node3D
 ## Manages the speed detection of the hand and the pluse detection system.
 
@@ -51,10 +52,6 @@ func mean(list : Array) -> float:
 	for i in list:
 		ret += i
 	return ret / list.size()
-
-
-func get_velocity() -> float:
-	return velocity
 
 
 ## Called when the node enters the scene tree for the first time.
@@ -128,15 +125,15 @@ func _deactivate_finger() -> void:
 	active = false
 
 
-func _on_button_pressed(name: String) -> void:
+func _on_button_pressed(button_name: String) -> void:
 	# TESTING
 	#print("Button "+name+" pressed")
-	if name == "grip_click" : _activate_finger()
+	if button_name == "grip_click" : _activate_finger()
 
 
 
-func _on_button_released(name: String) -> void:
+func _on_button_released(button_name: String) -> void:
 	# TESTING
 	#print("Button "+name+" released")
-	if name == "grip_click" : _deactivate_finger()
+	if button_name == "grip_click" : _deactivate_finger()
 

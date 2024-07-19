@@ -8,8 +8,8 @@ extends Node3D
 @onready var _label = $Label3D
 @onready var _sprite = $AnimatedSprite3D
 
-var followed_nodes : Array[Node3D] = [] ## The eligible nodes to be used
-var main_node : Node3D = null ## The currently used node
+var followed_nodes : Array[Hand] = [] ## The eligible nodes to be used
+var main_node : Hand = null ## The currently used node
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,9 +36,9 @@ func _process(_delta : float) -> void:
 
 
 func _on_detection_zone_body_entered(body : Node3D) -> void:
-	if body.has_method("get_velocity") :
+	if body is Hand :
 		followed_nodes.append(body)
-	elif body.get_parent().has_method("get_velocity") :
+	elif body.get_parent() is Hand :
 		followed_nodes.append(body.get_parent())
 
 
