@@ -8,9 +8,10 @@ extends Node3D
 @onready var _label = $Label3D
 @onready var _sprite = $AnimatedSprite3D
 
-var followed_nodes : Array[Hand] = [] ## The eligible nodes to be used
-var main_node : Hand = null ## The currently used node
-
+var followed_nodes : Array[Hand] = [] ## The eligible nodes to be used.
+## The currently used node, null means no suitable node found.
+var main_node : Hand = null
+var last_value : float ## The last retrived BPM value.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta : float) -> void:
@@ -25,6 +26,7 @@ func _process(_delta : float) -> void:
 			break
 	
 	if main_node != null:
+		last_value = main_node.estimated_bpm
 		_sprite.visible = true
 		_sprite.animation = str(main_node.beats)+" beats"
 		_sprite.frame = main_node.state % main_node.beats
@@ -45,4 +47,6 @@ func _on_detection_zone_body_entered(body : Node3D) -> void:
 func _on_detection_zone_body_exited(body : Node3D) -> void:
 	followed_nodes.erase(body)
 	if followed_nodes.is_empty() : 
-		_label.text = "Please stand on the \n platfrom to begin"
+		_label.text = "Please stand on the
+				platfrom to begin
+				Last recorded BPM: " + str(snappedf(last_value, 0.1))
