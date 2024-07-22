@@ -34,7 +34,9 @@ func _process(_delta : float) -> void:
 	else:
 		_sprite.visible = false
 		if not followed_nodes.is_empty() :
-			_label.text = "Please pess the grip button \n of one controller"
+			_label.text = "Please pess the grip button 
+					of one controller.
+					Last recorded BPM: " + str(snappedf(last_value, 0.1))
 
 
 func _on_detection_zone_body_entered(body : Node3D) -> void:
@@ -48,5 +50,5 @@ func _on_detection_zone_body_exited(body : Node3D) -> void:
 	followed_nodes.erase(body)
 	if followed_nodes.is_empty() : 
 		_label.text = "Please stand on the
-				platfrom to begin
+				platfrom to begin.
 				Last recorded BPM: " + str(snappedf(last_value, 0.1))

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://75nh0v75073o"]
+
+[ext_resource type="PackedScene" uid="uid://bsfh0nniwedjo" path="res://Scenes/button.tscn" id="1_jlii0"]
+[ext_resource type="Script" path="res://Scripts/metronome.gd" id="1_rm37o"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_qrpvb"]
+mix_rate = 22050.0
+buffer_length = 0.1
+
+[node name="Metronome" type="Node3D"]
+script = ExtResource("1_rm37o")
+
+[node name="Button" parent="." instance=ExtResource("1_jlii0")]
+label = "Start Metronome"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Player" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamGenerator_qrpvb")
+
+[connection signal="node_entered" from="Button" to="." method="_on_button_node_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
