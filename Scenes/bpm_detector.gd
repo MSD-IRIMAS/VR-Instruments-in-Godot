@@ -7,6 +7,7 @@ extends Node3D
 
 @onready var _label = $Label3D
 @onready var _sprite = $AnimatedSprite3D
+@onready var _metronome = $Metronome
 
 var followed_nodes : Array[Hand] = [] ## The eligible nodes to be used.
 ## The currently used node, null means no suitable node found.
@@ -27,12 +28,22 @@ func _process(_delta : float) -> void:
 	
 	if main_node != null:
 		last_value = main_node.estimated_bpm
+		
 		_sprite.visible = true
 		_sprite.animation = str(main_node.beats)+" beats"
 		_sprite.frame = main_node.state % main_node.beats
+		
+		_metronome.visible = false
+		_metronome.process_mode = Node.PROCESS_MODE_DISABLED
+		
 		_label.text = str(snappedf(main_node.estimated_bpm, 0.1))
 	else:
 		_sprite.visible = false
+		
+		_metronome.visible = true
+		_metronome.process_mode = Node.PROCESS_MODE_INHERIT
+		_metronome.bpm = last_value
+		
 		if not followed_nodes.is_empty() :
 			_label.text = "Please pess the grip button 
 					of one controller.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bere5gxm6bd48"]
+[gd_scene load_steps=18 format=3 uid="uid://bere5gxm6bd48"]
 
 [ext_resource type="Texture2D" uid="uid://dl1jm3fruidp2" path="res://Textures/pattern.png" id="1_403kr"]
 [ext_resource type="Script" path="res://Scenes/bpm_detector.gd" id="1_a4kkf"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c8f6jfd6lxm5q" path="res://Textures/Beat indicators/4 beats/4_beats_beat_2.svg" id="8_qwi0c"]
 [ext_resource type="Texture2D" uid="uid://kw7otgbbs3l8" path="res://Textures/Beat indicators/4 beats/4_beats_beat_3.svg" id="9_6pxku"]
 [ext_resource type="Texture2D" uid="uid://in2aq5t1w4m3" path="res://Textures/Beat indicators/4 beats/4_beats_beat_4.svg" id="10_mwsgo"]
+[ext_resource type="PackedScene" uid="uid://75nh0v75073o" path="res://Scenes/metronome.tscn" id="12_8wede"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8r148"]
 size = Vector3(1, 0.1, 1)
@@ -96,6 +97,9 @@ visible = false
 pixel_size = 0.001
 sprite_frames = SubResource("SpriteFrames_ai08f")
 animation = &"2 beats"
+
+[node name="Metronome" parent="." instance=ExtResource("12_8wede")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.75)
 
 [node name="DetectionZone" type="Area3D" parent="."]
 collision_layer = 4
