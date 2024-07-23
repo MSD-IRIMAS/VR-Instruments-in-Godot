@@ -71,7 +71,7 @@ animations = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uo31q"]
-size = Vector3(1, 2, 1)
+size = Vector3(1.5, 2, 1)
 
 [node name="BPMDetector" type="Node3D"]
 script = ExtResource("1_a4kkf")
@@ -104,10 +104,10 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.6, -0.75)
 
 [node name="DetectionZone" type="Area3D" parent="."]
 collision_layer = 4
-collision_mask = 6
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.255371, 1, 0)
 shape = SubResource("BoxShape3D_uo31q")
 
 [node name="MinusButton" parent="." instance=ExtResource("13_4f55b")]
@@ -128,3 +128,5 @@ text = "4"
 
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="DetectionZone" to="." method="_on_detection_zone_body_exited"]
+[connection signal="body_entered" from="MinusButton" to="." method="_on_minus_button_body_entered"]
+[connection signal="body_entered" from="PlusButton" to="." method="_on_plus_button_body_entered"]

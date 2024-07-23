@@ -8,12 +8,13 @@ extends Node3D
 @onready var _label = $BPMLabel
 @onready var _sprite = $AnimatedSprite3D
 @onready var _metronome = $Metronome
+@onready var _beats_label = $BeatsLabel
 
 var followed_nodes : Array[Hand] = [] ## The eligible nodes to be used.
 ## The currently used node, null means no suitable node found.
 var main_node : Hand = null
 var last_value : float ## The last retrived BPM value.
-var last_beats : int ## The last retrived Beats value.
+var last_beats : int = 4 ## The last retrived Beats value.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta : float) -> void:
@@ -29,7 +30,7 @@ func _process(_delta : float) -> void:
 	
 	if main_node != null:
 		last_value = main_node.estimated_bpm
-		last_beats = main_node.beats
+		#last_beats = main_node.beats
 		
 		_sprite.visible = true
 		_sprite.animation = str(main_node.beats)+" beats"
@@ -66,3 +67,17 @@ func _on_detection_zone_body_exited(body : Node3D) -> void:
 		_label.text = "Please stand on the
 				platfrom to begin.
 				Last recorded BPM: " + str(snappedf(last_value, 0.1))
+
+
+func _on_minus_button_body_entered(_body):
+	if last_beats > 2: last_beats -= 1
+	_beats_label.text = str(last_beats)
+	for hand : Hand in followed_nodes: hand.beats = last_beats
+	pass # Replace with function body.
+
+
+func _on_plus_button_body_entered(_body):
+	if last_beats < 4: last_beats += 1
+	_beats_label.text = str(last_beats)
+	for hand : Hand in followed_nodes: hand.beats = last_beats
+	pass # Replace with function body.

@@ -38,7 +38,7 @@ var velocity : float
 var _FingerHitbox : Node
 var _HandHitbox : Node
 
-@export_range(2, 4) var beats := 2 ## The number of beats per bar.
+@export_range(2, 4) var beats := 4 ## The number of beats per bar.
 var state := 0 ## The current beat minus one.
 
 var active := false ## Weather or not if the beat detection system is active
