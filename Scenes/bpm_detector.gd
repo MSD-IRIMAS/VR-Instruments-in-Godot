@@ -13,6 +13,7 @@ var followed_nodes : Array[Hand] = [] ## The eligible nodes to be used.
 ## The currently used node, null means no suitable node found.
 var main_node : Hand = null
 var last_value : float ## The last retrived BPM value.
+var last_beats : int ## The last retrived Beats value.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta : float) -> void:
@@ -28,6 +29,7 @@ func _process(_delta : float) -> void:
 	
 	if main_node != null:
 		last_value = main_node.estimated_bpm
+		last_beats = main_node.beats
 		
 		_sprite.visible = true
 		_sprite.animation = str(main_node.beats)+" beats"
@@ -43,6 +45,7 @@ func _process(_delta : float) -> void:
 		_metronome.visible = true
 		_metronome.process_mode = Node.PROCESS_MODE_INHERIT
 		_metronome.bpm = last_value
+		_metronome.beats = last_beats
 		
 		if not followed_nodes.is_empty() :
 			_label.text = "Please pess the grip button 
