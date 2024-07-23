@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bere5gxm6bd48"]
 
 [ext_resource type="Texture2D" uid="uid://dl1jm3fruidp2" path="res://Textures/pattern.png" id="1_403kr"]
-[ext_resource type="Script" path="res://Scenes/bpm_detector.gd" id="1_a4kkf"]
+[ext_resource type="Script" path="res://Scripts/bpm_detector.gd" id="1_a4kkf"]
 [ext_resource type="Texture2D" uid="uid://i85cmtubf3yp" path="res://Textures/Beat indicators/2 beats/2_beats_beat_1.svg" id="2_06gq4"]
 [ext_resource type="Texture2D" uid="uid://dpg5c0m7t41yi" path="res://Textures/Beat indicators/2 beats/2_beats_beat_2.svg" id="3_dm1vq"]
 [ext_resource type="Texture2D" uid="uid://2epfgqx7cqm8" path="res://Textures/Beat indicators/3 beats/3_beats_beat_1.svg" id="4_j7exj"]
