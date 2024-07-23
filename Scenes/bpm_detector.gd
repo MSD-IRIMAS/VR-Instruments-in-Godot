@@ -5,7 +5,7 @@ extends Node3D
 ## BPM and the movements needed to measure it. The real BPM estimation is done in
 ## the "beat detection" region of the Hand script.
 
-@onready var _label = $Label3D
+@onready var _label = $BPMLabel
 @onready var _sprite = $AnimatedSprite3D
 @onready var _metronome = $Metronome
 

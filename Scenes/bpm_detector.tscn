@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bere5gxm6bd48"]
+[gd_scene load_steps=19 format=3 uid="uid://bere5gxm6bd48"]
 
 [ext_resource type="Texture2D" uid="uid://dl1jm3fruidp2" path="res://Textures/pattern.png" id="1_403kr"]
 [ext_resource type="Script" path="res://Scenes/bpm_detector.gd" id="1_a4kkf"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://kw7otgbbs3l8" path="res://Textures/Beat indicators/4 beats/4_beats_beat_3.svg" id="9_6pxku"]
 [ext_resource type="Texture2D" uid="uid://in2aq5t1w4m3" path="res://Textures/Beat indicators/4 beats/4_beats_beat_4.svg" id="10_mwsgo"]
 [ext_resource type="PackedScene" uid="uid://75nh0v75073o" path="res://Scenes/metronome.tscn" id="12_8wede"]
+[ext_resource type="PackedScene" uid="uid://bsfh0nniwedjo" path="res://Scenes/button.tscn" id="13_4f55b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8r148"]
 size = Vector3(1, 0.1, 1)
@@ -85,7 +86,7 @@ shape = SubResource("BoxShape3D_8r148")
 mesh = SubResource("BoxMesh_a2u6l")
 skeleton = NodePath("../..")
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="BPMLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1)
 text = "Stand on the 
 platform to begin
@@ -108,6 +109,22 @@ collision_mask = 6
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_uo31q")
+
+[node name="MinusButton" parent="." instance=ExtResource("13_4f55b")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -0.75, 0.6, 0.2)
+label = "-"
+
+[node name="PlusButton" parent="." instance=ExtResource("13_4f55b")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -0.75, 0.6, -0.2)
+label = "+"
+
+[node name="BeatsNameLabel" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.75, 0.8, 0)
+text = "Beats"
+
+[node name="BeatsLabel" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.75, 0.6, 0)
+text = "4"
 
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="DetectionZone" to="." method="_on_detection_zone_body_exited"]
