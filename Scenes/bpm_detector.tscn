@@ -115,7 +115,7 @@ sprite_frames = SubResource("SpriteFrames_ai08f")
 animation = &"2 beats"
 
 [node name="Metronome" parent="." instance=ExtResource("12_8wede")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.6, -0.75)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.2, -0.75)
 
 [node name="DetectionZone" type="Area3D" parent="."]
 collision_layer = 4
@@ -126,19 +126,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.255371, 1, 0)
 shape = SubResource("BoxShape3D_uo31q")
 
 [node name="MinusButton" parent="." instance=ExtResource("13_4f55b")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -0.75, 0.6, 0.2)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -0.75, 1.2, 0.2)
 label = "-"
 
 [node name="PlusButton" parent="." instance=ExtResource("13_4f55b")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -0.75, 0.6, -0.2)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -0.75, 1.2, -0.2)
 label = "+"
 
 [node name="BeatsNameLabel" type="Label3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.75, 0.8, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.75, 1.4, 0)
 text = "Beats"
 
 [node name="BeatsLabel" type="Label3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.75, 0.6, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.75, 1.2, 0)
 text = "4"
 
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
