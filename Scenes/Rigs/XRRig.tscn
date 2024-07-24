@@ -18,10 +18,11 @@ size = Vector3(0.075, 0.15, 0.2)
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
-[node name="LeftHand" type="XRController3D" parent="."]
+[node name="LeftHand" type="XRController3D" parent="." node_paths=PackedStringArray("deported_origin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 script = ExtResource("1_esba0")
+deported_origin = NodePath("../XRCamera3D")
 
 [node name="LeftHand" parent="LeftHand" instance=ExtResource("1_cxedf")]
 
@@ -48,10 +49,11 @@ sync_to_physics = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftHand/HandHitbox"]
 shape = SubResource("BoxShape3D_ngohn")
 
-[node name="RightHand" type="XRController3D" parent="."]
+[node name="RightHand" type="XRController3D" parent="." node_paths=PackedStringArray("deported_origin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
 script = ExtResource("1_esba0")
+deported_origin = NodePath("../XRCamera3D")
 
 [node name="RightHand" parent="RightHand" instance=ExtResource("2_rqfxi")]
 

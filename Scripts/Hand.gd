@@ -20,7 +20,7 @@ const PATERNS := {
 @export var MIN_DISTANCE := 0.05
 ## The minimum speed the hand shall travel to count for beat detection, 
 ## in meters per second.
-@export var MIN_SPEED := 0.05 
+@export var MIN_SPEED := 0.05
 
 ## The number of last beat lenghs to account for pulse calculation.
 const CALCULATION_WINDOW_SIZE := 10
@@ -30,10 +30,12 @@ var fps : int = ProjectSettings.get_setting("physics/common/physics_ticks_per_se
 
 ## The current velocity in meters per second.
 var velocity : float
-## The last known position, defaults to the starting position.
-@onready var last_position := position
-## All the recorded positions, staring with the starting position.
-@onready var recorded_positions : Array[Vector3] = [position]
+## The last known position
+@onready var last_position : Vector3
+## All the recorded positions
+@onready var recorded_positions : Array[Vector3] = []
+## The reference node if it isn't the parent node
+@export var deported_origin : Node3D
 
 var _FingerHitbox : Node
 var _HandHitbox : Node
@@ -59,17 +61,25 @@ func _ready() -> void:
 	if get_node(".") is XRController3D:
 		_FingerHitbox = $FingerHitbox
 		_HandHitbox = $HandHitbox
+	if deported_origin != null :
+		last_position = position * deported_origin.transform
+		recorded_positions.append(last_position)
+	else:
+		last_position = position
+		recorded_positions.append(position)
 	pass # Replace with function body.
 
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta) -> void:
 	# Register variables and calculate velocity
-	var movement := position - last_position
+	var movement := position - last_position if deported_origin == null \
+			else position.rotated(Vector3.UP, deported_origin.rotation.y) - last_position
 	velocity = movement.length() * fps
-	last_position = position
+	last_position = position if deported_origin == null \
+			else position.rotated(Vector3.UP, deported_origin.rotation.y)
 	
-	elapsed_time += delta
+	if active : elapsed_time += delta
 	
 	# TESTING
 	#print(velocity)
@@ -77,10 +87,10 @@ func _physics_process(delta) -> void:
 	#region beat detection
 	# If the length between the two last points is longer than the minimun distance
 	# and if the velocity is lower than the minimum speed...
-	if active and (recorded_positions[-1] - position).length() >= MIN_DISTANCE \
+	if active and (recorded_positions[-1] - last_position).length() >= MIN_DISTANCE \
 	and velocity <= MIN_SPEED:
 		# ...Add the position to the record
-		recorded_positions.append(position)
+		recorded_positions.append(last_position)
 		# TESTING
 		#print(recorded_positions[-1])
 		
