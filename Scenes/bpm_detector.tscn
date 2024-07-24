@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bere5gxm6bd48"]
+[gd_scene load_steps=21 format=3 uid="uid://bere5gxm6bd48"]
 
 [ext_resource type="Texture2D" uid="uid://dl1jm3fruidp2" path="res://Textures/pattern.png" id="1_403kr"]
 [ext_resource type="Script" path="res://Scripts/bpm_detector.gd" id="1_a4kkf"]
@@ -24,6 +24,13 @@ albedo_texture = ExtResource("1_403kr")
 [sub_resource type="BoxMesh" id="BoxMesh_a2u6l"]
 material = SubResource("StandardMaterial3D_yuib7")
 size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ft2bs"]
+size = Vector3(1, 0.15, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o852f"]
+material = SubResource("StandardMaterial3D_yuib7")
+size = Vector3(1, 0.15, 0.15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ai08f"]
 animations = [{
@@ -85,6 +92,14 @@ shape = SubResource("BoxShape3D_8r148")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 mesh = SubResource("BoxMesh_a2u6l")
 skeleton = NodePath("../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -0.05, 0.5)
+shape = SubResource("BoxShape3D_ft2bs")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -0.05, 0.5)
+mesh = SubResource("BoxMesh_o852f")
 
 [node name="BPMLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1)
