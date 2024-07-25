@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq1bhunj1tq1s"]
+
+[ext_resource type="PackedScene" uid="uid://75nh0v75073o" path="res://Scenes/metronome.tscn" id="1_b8h8x"]
+[ext_resource type="Script" path="res://Scripts/metronome_with_controls.gd" id="1_fvm7t"]
+[ext_resource type="PackedScene" uid="uid://bsfh0nniwedjo" path="res://Scenes/button.tscn" id="2_i1bkn"]
+
+[node name="Metronome with controls" type="Node3D"]
+script = ExtResource("1_fvm7t")
+
+[node name="Metronome" parent="." instance=ExtResource("1_b8h8x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Beats Selector" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+
+[node name="MinusButton" parent="Beats Selector" instance=ExtResource("2_i1bkn")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.15, 0, 0)
+label = "-"
+
+[node name="BeatsNameLabel" type="Label3D" parent="Beats Selector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+text = "Beats"
+
+[node name="BeatsLabel" type="Label3D" parent="Beats Selector"]
+text = "4"
+
+[node name="PlusButton" parent="Beats Selector" instance=ExtResource("2_i1bkn")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.15, 0, 0)
+label = "+"
+
+[node name="BPM Selector" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+
+[node name="MinusOneButton" parent="BPM Selector" instance=ExtResource("2_i1bkn")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.2, 0, 0)
+label = "-1"
+
+[node name="MinusFiveButton" parent="BPM Selector" instance=ExtResource("2_i1bkn")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.35, 0, 0)
+label = "-5"
+
+[node name="BPMNameLabel" type="Label3D" parent="BPM Selector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+text = "BPM"
+
+[node name="BPMLabel" type="Label3D" parent="BPM Selector"]
+text = "120"
+
+[node name="PlusOneButton" parent="BPM Selector" instance=ExtResource("2_i1bkn")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.2, 0, 0)
+label = "-1"
+
+[node name="PlusFiveButton" parent="BPM Selector" instance=ExtResource("2_i1bkn")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.35, 0, 0)
+label = "+5"
+
+[connection signal="body_entered" from="Beats Selector/MinusButton" to="." method="_on_minus_button_body_entered"]
+[connection signal="body_entered" from="Beats Selector/PlusButton" to="." method="_on_plus_button_body_entered"]
+[connection signal="node_entered" from="BPM Selector/MinusOneButton" to="." method="_on_node_entered"]
+[connection signal="node_entered" from="BPM Selector/MinusFiveButton" to="." method="_on_node_entered"]
+[connection signal="node_entered" from="BPM Selector/PlusOneButton" to="." method="_on_node_entered"]
+[connection signal="node_entered" from="BPM Selector/PlusFiveButton" to="." method="_on_node_entered"]
