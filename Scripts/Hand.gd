@@ -104,7 +104,7 @@ func _physics_process(delta : float) -> void:
 		# the current beat and this vector
 		var angle := rad_to_deg(PATERNS[beats][state % beats].angle_to(movement))
 		# TESTING
-		print(angle)
+		#print(angle)
 		
 		# If this angle is equal of less than the max angle...
 		if angle <= MAX_ANGLE :
@@ -113,7 +113,7 @@ func _physics_process(delta : float) -> void:
 			elapsed_time = 0.0 # ... And reset the time
 			
 			# TESTING
-			print("Pass, go to state "+str(state % beats))
+			#print("Pass, go to state "+str(state % beats))
 			#print(beat_lengths)
 			
 			# Here is where the BPM are calculated

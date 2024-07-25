@@ -41,4 +41,5 @@ const INSTRUMENTS := {
 	"PIANO" = [1, 0.1, 0.325, 0.075, 0.7, 0.6, 0, 0.5]
 }
 
+## An enum containing the instrument's names.
 enum INSTRUMENTS_NAMES {SINE, TRIANGLE, FLUTE, OOBE, CLARINET, HORN, GUITAR, PIANO}

@@ -1,7 +1,8 @@
 extends Object
+## A multiplexing script to get one signal for all notes.
 
-signal note_begin(note: String, velocity : float)
-signal note_end(note: String)
+signal note_begin(note: String, velocity : float) ## Emited when a notes begins.
+signal note_end(note: String) ## Emited when a note ends.
 
 func _get_velocity(body: Node3D) -> float:
 	if body is Hand :

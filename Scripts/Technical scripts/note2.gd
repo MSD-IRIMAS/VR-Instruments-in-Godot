@@ -8,70 +8,67 @@ extends Area3D
 ## of dynamicaly changing the source code.
 
 
-var Player : AudioStreamPlayer3D = null
-var mesh : MeshInstance3D = null
+var _Player : AudioStreamPlayer3D = null
+var _mesh : MeshInstance3D = null
 
-## The sample frequency, in Hertz.[br]
-## Keep the number of samples to mix low, GDScript is not super fast.
-var sample_hz := 22050.0
-## The note's pulse in Hertz, fetched from the Object's metadata
-var pulse_hz : float = get_meta("pulse")
-var phase := 0.0
+var _sample_hz := 22050.0
+var _pulse_hz : float = get_meta("pulse")
+var _phase := 0.0
 
-var playback : AudioStreamPlayback = null
-var movement : float = get_meta("movement")
+var _playback : AudioStreamPlayback = null
+var _movement : float = get_meta("movement")
 
 func _init() -> void:
 	# TESTING print(pulse_hz)
 	body_exited.connect(_on_body_exited)
-	Player = $Player
-	mesh = $MeshInstance3D
+	_Player = $Player
+	_mesh = $MeshInstance3D
 	
 	set_process(true)
-	mesh.position.y -= movement
+	_mesh.position.y -= _movement
 	
 	# Setting mix rate is only possible before play().
-	Player.stream.mix_rate = sample_hz
-	Player.volume_db = get_meta("volume")
-	Player.play()
-	playback = Player.get_stream_playback()
+	_Player.stream.mix_rate = _sample_hz
+	_Player.volume_db = get_meta("volume")
+	_Player.play()
+	_playback = _Player.get_stream_playback()
 	# WARNING `_fill_buffer` must be called *after* setting `playback`,
 	# as `fill_buffer` uses the `playback` member variable.
-	fill_buffer()
+	_fill_buffer()
 
 
 func _ready() -> void:
-	Player = $Player
-	mesh = $MeshInstance3D
+	_Player = $Player
+	_mesh = $MeshInstance3D
 	
-	mesh.position.y -= movement
+	_mesh.position.y -= _movement
 	
-	Player.stream.mix_rate = sample_hz
-	Player.volume_db = get_meta("volume")
-	Player.play()
-	playback = Player.get_stream_playback()
-	fill_buffer()
+	_Player.stream.mix_rate = _sample_hz
+	_Player.volume_db = get_meta("volume")
+	_Player.play()
+	_playback = _Player.get_stream_playback()
+	_fill_buffer()
 
-func fill_buffer() -> void:
-	var increment := pulse_hz / sample_hz
+func _fill_buffer() -> void:
+	var increment := _pulse_hz / _sample_hz
 
-	var to_fill : int = playback.get_frames_available()
+	var to_fill : int = _playback.get_frames_available()
 	# TESTING 
 	#print(to_fill)
 	while to_fill > 0:
-		playback.push_frame(Vector2.ONE * sin(phase * TAU)) # Audio frames are stereo.
-		phase = fmod(phase + increment, 1.0)
+		_playback.push_frame(Vector2.ONE * sin(_phase * TAU)) # Audio frames are stereo.
+		_phase = fmod(_phase + increment, 1.0)
 		to_fill -= 1
 
 
 func _process(_delta : float) -> void:
-	fill_buffer()
+	_fill_buffer()
 
 
 func _on_body_exited(_body: Node3D) -> void:
 	# TESTING 
 	#print(body.name + " exited note")
-	mesh.position.y += movement
+	_mesh.position.y += _movement
 	#Player.stop()
 	body_exited.disconnect(_on_body_exited)
 	# TESTING 

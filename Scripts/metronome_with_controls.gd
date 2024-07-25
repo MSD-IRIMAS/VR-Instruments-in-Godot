@@ -1,4 +1,5 @@
 extends Node3D
+## Control script for the metronome
 
 @onready var _metronome := $Metronome
 @onready var _beats_label := $"Beats Selector/BeatsLabel"

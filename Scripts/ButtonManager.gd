@@ -27,14 +27,16 @@ func _ready():
 
 func _on_instruments_body_entered(_body):
 	if buttons_shown:
-		print("Hide buttons")
+		#TESTING
+		#print("Hide buttons")
 		buttons_shown = false
 		for i in Music.INSTRUMENTS.keys():
 			var button : Node3D = find_child(i, true, false)
 			button.visible = false
 			button.process_mode = Node.PROCESS_MODE_DISABLED
 	else:
-		print("Show buttons")
+		#TESTING
+		#print("Show buttons")
 		buttons_shown = true 
 		for i in Music.INSTRUMENTS.keys():
 			var button : Node3D = find_child(i, true, false)
@@ -43,5 +45,6 @@ func _on_instruments_body_entered(_body):
 
 
 func _on_node_entered(emitter: String):
-	print(emitter+" pressed")
+	#TESTING
+	#print(emitter+" pressed")
 	get_parent().instrument = Music.INSTRUMENTS_NAMES.get(emitter)

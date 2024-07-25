@@ -1,5 +1,4 @@
 extends Node
-
 ## Startup script for VR
 
 @onready var _XRRig := $XRRig
@@ -7,10 +6,12 @@ extends Node
 
 var _xr_interface: XRInterface
 
+
 func _ready():
 	_xr_interface = XRServer.find_interface("OpenXR")
 	if _xr_interface and _xr_interface.is_initialized():
-		print("OpenXR initialized successfully")
+		#TESTING
+		#print("OpenXR initialized successfully")
 
 		# Turn off v-sync!
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
@@ -19,7 +20,8 @@ func _ready():
 		get_viewport().use_xr = true
 		_activateXR()
 	else:
-		print("OpenXR not initialized, please check if your headset is connected")
+		#TESTING
+		#print("OpenXR not initialized, please check if your headset is connected")
 		_deactivateXR()
 
 

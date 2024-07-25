@@ -18,9 +18,9 @@ const HEIGHT := 0.8 ## The height of the player, in meters
 ## Default 9.8
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var left_hand := $LeftHand ## The left hand node
-@onready var right_hand := $RightHand ## The right hand node
-@onready var camera := $Camera3D ## The camera
+@onready var _left_hand := $LeftHand
+@onready var _right_hand := $RightHand
+@onready var _camera := $Camera3D
 
 var _user_distance := 1.0
 var _rotating := false
@@ -55,30 +55,30 @@ func _physics_process(delta : float) -> void:
 	var distance_ratio := distance_from_center / max_length
 	if distance_ratio > 1: distance_ratio = 1
 	if distance_ratio < min_distance: distance_ratio = min_distance
-	var pos : Vector3 = camera.project_ray_origin(mouse_pos) \
-			+ camera.project_ray_normal(mouse_pos) \
+	var pos : Vector3 = _camera.project_ray_origin(mouse_pos) \
+			+ _camera.project_ray_normal(mouse_pos) \
 			* distance_ratio * _user_distance
 	
 	#Handles hands visibility and position
 	if Input.is_action_pressed("debug_crl"): 
-		left_hand.visible = true
-		left_hand.process_mode = Node.PROCESS_MODE_INHERIT
-		left_hand.global_position = pos
-		left_hand.active = true
+		_left_hand.visible = true
+		_left_hand.process_mode = Node.PROCESS_MODE_INHERIT
+		_left_hand.global_position = pos
+		_left_hand.active = true
 	else: 
-		left_hand.active = false
-		left_hand.visible = false
-		left_hand.process_mode = Node.PROCESS_MODE_DISABLED
+		_left_hand.active = false
+		_left_hand.visible = false
+		_left_hand.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	if Input.is_action_pressed("debug_alt"): 
-		right_hand.visible = true
-		right_hand.process_mode = Node.PROCESS_MODE_INHERIT
-		right_hand.global_position = pos
-		right_hand.active = true
+		_right_hand.visible = true
+		_right_hand.process_mode = Node.PROCESS_MODE_INHERIT
+		_right_hand.global_position = pos
+		_right_hand.active = true
 	else: 
-		right_hand.active = false
-		right_hand.visible = false
-		right_hand.process_mode = Node.PROCESS_MODE_DISABLED
+		_right_hand.active = false
+		_right_hand.visible = false
+		_right_hand.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	#Handle couching
 	if Input.is_action_just_pressed("debug_shift"):
@@ -102,4 +102,4 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and _rotating:
 		var mevent := event as InputEventMouseMotion
 		rotate_y(deg_to_rad(-mevent.relative.x * mouse_sensitivity))
-		camera.rotate_x(deg_to_rad(-mevent.relative.y * mouse_sensitivity))
+		_camera.rotate_x(deg_to_rad(-mevent.relative.y * mouse_sensitivity))

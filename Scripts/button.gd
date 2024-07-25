@@ -14,7 +14,8 @@ const CHAR_LENGTH := 0.025 ## The length of a character, in meters.
 	set(newLabel):
 		label = newLabel
 		if _label_object != null : _label_object.text = label
-		print("New label: "+label)
+		#TESTING
+		#print("New label: "+label)
 		if _label_object != null : _update_size(newLabel)
 
 ## The movement of the button when pressed, in meters
