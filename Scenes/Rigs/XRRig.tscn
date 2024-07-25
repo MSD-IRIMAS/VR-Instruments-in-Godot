@@ -22,6 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 script = ExtResource("1_esba0")
+MAX_ANGLE = 30.0
 deported_origin = NodePath("../XRCamera3D")
 
 [node name="LeftHand" parent="LeftHand" instance=ExtResource("1_cxedf")]
@@ -53,6 +54,7 @@ shape = SubResource("BoxShape3D_ngohn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
 script = ExtResource("1_esba0")
+MAX_ANGLE = 30.0
 deported_origin = NodePath("../XRCamera3D")
 
 [node name="RightHand" parent="RightHand" instance=ExtResource("2_rqfxi")]

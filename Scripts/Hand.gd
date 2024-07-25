@@ -14,7 +14,7 @@ const PATERNS := {
 
 ## The maximum angle accepted for beat detection, 
 ## in degrees.
-@export var MAX_ANGLE := 22.5
+@export_range(0, 90, 0.5, "degrees") var MAX_ANGLE := 22.5
 ## The minimum distance the hand shall travel to count for beat detection, 
 ## in meters.
 @export var MIN_DISTANCE := 0.05
@@ -61,17 +61,17 @@ func _ready() -> void:
 	if get_node(".") is XRController3D:
 		_FingerHitbox = $FingerHitbox
 		_HandHitbox = $HandHitbox
+
 	if deported_origin != null :
-		last_position = position * deported_origin.transform
+		last_position = position.rotated(Vector3.UP, deported_origin.rotation.y)
 		recorded_positions.append(last_position)
 	else:
 		last_position = position
 		recorded_positions.append(position)
-	pass # Replace with function body.
 
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta) -> void:
+func _physics_process(delta : float) -> void:
 	# Register variables and calculate velocity
 	var movement := position - last_position if deported_origin == null \
 			else position.rotated(Vector3.UP, deported_origin.rotation.y) - last_position
@@ -80,6 +80,7 @@ func _physics_process(delta) -> void:
 			else position.rotated(Vector3.UP, deported_origin.rotation.y)
 	
 	if active : elapsed_time += delta
+	else : elapsed_time = 0
 	
 	# TESTING
 	#print(velocity)

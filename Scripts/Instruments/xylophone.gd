@@ -22,7 +22,7 @@ enum MODES {SINGLE_NOTE, POLYPHONIC, FOURIER_SINGLE}
 		_instrument_serie = FourierSerie.new( \
 				Music.INSTRUMENTS[Music.INSTRUMENTS_NAMES.find_key(instrument)], \
 				440)
-		$Label3D.text = Music.INSTRUMENTS_NAMES.find_key(instrument)
+		$Label3D.text = "Current instrument:\n"+Music.INSTRUMENTS_NAMES.find_key(instrument)
 
 @onready var _Notes := $Notes
 @onready var _Player := $Player 

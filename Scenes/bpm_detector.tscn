@@ -103,6 +103,7 @@ mesh = SubResource("BoxMesh_o852f")
 
 [node name="BPMLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1)
+pixel_size = 0.004
 text = "Stand on the 
 platform to begin
 Last recorded BPM: none"
@@ -115,7 +116,7 @@ sprite_frames = SubResource("SpriteFrames_ai08f")
 animation = &"2 beats"
 
 [node name="Metronome" parent="." instance=ExtResource("12_8wede")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.2, -0.75)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.1, -0.75)
 
 [node name="DetectionZone" type="Area3D" parent="."]
 collision_layer = 4

@@ -25,7 +25,7 @@ func _process(_delta : float) -> void:
 	for node : Hand in followed_nodes:
 		if node.active and main_node == null : main_node = node
 		elif node.active and main_node != null : 
-			_label.text = "Two nodes can't be active \n at the same time!"
+			_label.text = "Two hands can't be active \n at the same time!"
 			main_node = null
 			error = true
 			break
@@ -45,15 +45,16 @@ func _process(_delta : float) -> void:
 	else:
 		_sprite.visible = false
 		
-		_metronome.visible = true
-		_metronome.process_mode = Node.PROCESS_MODE_INHERIT
-		_metronome.bpm = last_value
-		_metronome.beats = last_beats
-		
-		if not followed_nodes.is_empty() and not error:
-			_label.text = "Please pess the grip button 
-					of one controller.
-					Last recorded BPM: " + str(snappedf(last_value, 0.1))
+		if not error:
+			_metronome.visible = true
+			_metronome.process_mode = Node.PROCESS_MODE_INHERIT
+			_metronome.bpm = last_value
+			_metronome.beats = last_beats
+			
+			if not followed_nodes.is_empty():
+				_label.text = "Please pess the grip button 
+						of one controller.
+						Last recorded BPM: " + str(snappedf(last_value, 0.1))
 
 
 func _on_detection_zone_body_entered(body : Node3D) -> void:
