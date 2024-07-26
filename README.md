@@ -8,7 +8,7 @@ This software uses:
 
 ## Instalation
 ### From the binaries
-Download the relevent zip file from the releases page, unzip it and execute the program.
+Download the relevent executable file from the releases page and execute the program.
 
 ### From the source
 1. Clone the repository.
@@ -32,7 +32,7 @@ Ce logiciel utilise:
 
 ## Instalation
 ### Depuis les fichiers binaires
-Téléchargez le fichier zip corespondant à votre système d'exploitation depuis la page des sorties, décompressez-le et exécutez le programme.
+Téléchargez le fichier exécutable corespondant à votre système d'exploitation depuis la page des sorties et exécutez le programme.
 
 ### Depuis le code source
 1. Clonez le dépôt.
