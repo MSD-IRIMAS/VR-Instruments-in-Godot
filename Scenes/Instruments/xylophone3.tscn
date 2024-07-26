@@ -377,10 +377,6 @@ shape = SubResource("BoxShape3D_n4ctf")
 [node name="Player" type="AudioStreamPlayer3D" parent="Notes/B"]
 stream = SubResource("AudioStreamGenerator_i0l1u")
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.25, 1.65, 0)
-text = "3"
-
 [connection signal="note_begin" from="Notes" to="." method="_on_notes_note_begin"]
 [connection signal="body_entered" from="Notes/C" to="Notes" method="_on_c_body_entered"]
 [connection signal="body_exited" from="Notes/C" to="Notes" method="_on_c_body_exited"]

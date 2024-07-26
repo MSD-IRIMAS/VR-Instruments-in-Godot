@@ -46,11 +46,12 @@ func _on_button_node_entered(emitter):
 	else:
 		_Button.label = "Start Metronome"
 		_Timer.stop()
+		if _state % beats == 1 : _pulse_hz /= 2
 		_state = 0
 
 
 func _on_timer_timeout():
-	if _state % beats == 0: _pulse_hz *= 2
-	if _state % beats == 1: _pulse_hz /= 2
+	if _state % beats == 0 : _pulse_hz *= 2
+	if _state % beats == 1 : _pulse_hz /= 2
 	_state += 1
 	_fill_buffer()
