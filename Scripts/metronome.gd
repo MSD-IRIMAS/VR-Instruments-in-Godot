@@ -46,6 +46,7 @@ func _on_button_node_entered(emitter):
 	else:
 		_Button.label = "Start Metronome"
 		_Timer.stop()
+		_state = 0
 
 
 func _on_timer_timeout():

@@ -48,7 +48,7 @@ text = "120"
 
 [node name="PlusOneButton" parent="BPM Selector" instance=ExtResource("2_i1bkn")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.2, 0, 0)
-label = "-1"
+label = "+1"
 
 [node name="PlusFiveButton" parent="BPM Selector" instance=ExtResource("2_i1bkn")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.35, 0, 0)

@@ -17,7 +17,8 @@ enum MODES {SINGLE_NOTE, POLYPHONIC, FOURIER_SINGLE}
 ## The current instrument (usefull only in FOURIER_SINGLE mode).
 @export var instrument := Music.INSTRUMENTS_NAMES.SINE :
 	set(new_instrument):
-		print("New instrument: "+Music.INSTRUMENTS_NAMES.find_key(new_instrument))
+		#TESTING
+		#print("New instrument: "+Music.INSTRUMENTS_NAMES.find_key(new_instrument))
 		instrument = new_instrument
 		_instrument_serie = FourierSerie.new( \
 				Music.INSTRUMENTS[Music.INSTRUMENTS_NAMES.find_key(instrument)], \
