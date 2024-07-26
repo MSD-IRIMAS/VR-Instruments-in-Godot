@@ -10,9 +10,9 @@ extends Node3D
 @onready var _metronome = $Metronome
 @onready var _beats_label = $BeatsLabel
 
-var followed_nodes : Array[Hand] = [] ## The eligible nodes to be used.
+var followed_nodes : Array[RigHand] = [] ## The eligible nodes to be used.
 ## The currently used node, null means no suitable node found.
-var main_node : Hand = null
+var main_node : RigHand = null
 var last_value : float ## The last retrived BPM value.
 var last_beats : int = 4 ## The last retrived Beats value.
 
@@ -22,7 +22,7 @@ func _process(_delta : float) -> void:
 	main_node = null
 	
 	# Go trough the nodes to find one active
-	for node : Hand in followed_nodes:
+	for node : RigHand in followed_nodes:
 		if node.active and main_node == null : main_node = node
 		elif node.active and main_node != null : 
 			_label.text = "Two hands can't be active \n at the same time!"
@@ -60,9 +60,9 @@ func _process(_delta : float) -> void:
 func _on_detection_zone_body_entered(body : Node3D) -> void:
 	#TESTING
 	#print("node "+body.name+" entered")
-	if body is Hand :
+	if body is RigHand :
 		followed_nodes.append(body)
-	elif body.get_parent() is Hand :
+	elif body.get_parent() is RigHand :
 		followed_nodes.append(body.get_parent())
 
 
@@ -80,12 +80,12 @@ func _on_detection_zone_body_exited(body : Node3D) -> void:
 func _on_minus_button_body_entered(_body):
 	if last_beats > 2: last_beats -= 1
 	_beats_label.text = str(last_beats)
-	for hand : Hand in followed_nodes: hand.beats = last_beats
+	for hand : RigHand in followed_nodes: hand.beats = last_beats
 	pass # Replace with function body.
 
 
 func _on_plus_button_body_entered(_body):
 	if last_beats < 4: last_beats += 1
 	_beats_label.text = str(last_beats)
-	for hand : Hand in followed_nodes: hand.beats = last_beats
+	for hand : RigHand in followed_nodes: hand.beats = last_beats
 	pass # Replace with function body.

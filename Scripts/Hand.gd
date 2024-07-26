@@ -1,4 +1,4 @@
-class_name Hand
+class_name RigHand
 extends Node3D
 ## Manages the speed detection of the hand and the pluse detection system.
 

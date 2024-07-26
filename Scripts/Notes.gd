@@ -5,9 +5,9 @@ signal note_begin(note: String, velocity : float) ## Emited when a notes begins.
 signal note_end(note: String) ## Emited when a note ends.
 
 func _get_velocity(body: Node3D) -> float:
-	if body is Hand :
+	if body is RigHand :
 		return body.velocity
-	elif body.get_parent() is Hand :
+	elif body.get_parent() is RigHand :
 		return body.get_parent().velocity
 	else :
 		push_error(ERR_BUG)
