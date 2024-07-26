@@ -2,7 +2,11 @@ extends Node3D
 ## A script for a metronome.
 
 @export var bpm : float = 120 ## The BPM of the metronome
-@export_range(2,4) var beats := 4 ## The number of beats in one bar
+## The number of beats in one bar
+@export var beats := 4 :
+	set(new_beats):
+		if new_beats > 0 : beats = new_beats
+		else : beats = 1
 
 var _sample_hz := 22050.0 # Keep the number of samples to mix low, GDScript is not super fast.
 var _pulse_hz := 220.0

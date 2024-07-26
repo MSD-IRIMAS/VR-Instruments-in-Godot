@@ -6,12 +6,12 @@ extends Node3D
 @onready var _BPM_label := $"BPM Selector/BPMLabel"
 
 func _on_minus_button_body_entered(_body : Node3D) -> void :
-	if _metronome.beats > 2: _metronome.beats -= 1
+	if _metronome.beats > 0: _metronome.beats -= 1
 	_beats_label.text = str(_metronome.beats)
 
 
 func _on_plus_button_body_entered(_body : Node3D) -> void:
-	if _metronome.beats < 4: _metronome.beats += 1
+	if _metronome.beats < 100: _metronome.beats += 1
 	_beats_label.text = str(_metronome.beats)
 
 
